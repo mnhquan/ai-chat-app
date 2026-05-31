@@ -39,6 +39,9 @@ CREATE TABLE messages (
     created_at TIMESTAMP DEFAULT NOW()
 )
 
+CREATE INDEX idx_messages_group_created ON messages(group_id, created_at);
+CREATE INDEX idx_messages_sender ON messages(sender_id);
+
 CREATE TABLE ai_analyses (
     id BIGSERIAL PRIMARY KEY,
     group_id BIGINT REFERENCES groups(id) ON DELETE CASCADE,
@@ -52,3 +55,6 @@ CREATE TABLE ai_analyses (
     message_count INTEGER,
     analyzed_at TIMESTAMP DEFAULT NOW()
 )
+
+CREATE INDEX idx_ai_analyses_group_user ON ai_analyses(group_id, user_id);
+
