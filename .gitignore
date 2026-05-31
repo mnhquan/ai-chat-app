@@ -7,3 +7,9 @@ target/
 *.war
 *.class
 *.log
+
+
+# Env
+.env
+*.env
+.env.*
