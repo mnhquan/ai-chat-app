@@ -5,10 +5,10 @@ CREATE TABLE users (
     password_hash VARCHAR(255) NOT NULL,
     display_name VARCHAR(100),
     avatar_url VARCHAR(500),
-    last_global_onlie TIMESTAMP DEFAULT NOW(),
+    last_global_online TIMESTAMP DEFAULT NOW(),
     created_at TIMESTAMP DEFAULT NOW(),
     updated_at TIMESTAMP DEFAULT NOW()
-)
+);
 
 CREATE TABLE groups (
     id BIGSERIAL PRIMARY KEY,
@@ -19,7 +19,7 @@ CREATE TABLE groups (
     is_direct_message BOOLEAN,
     created_at TIMESTAMP DEFAULT NOW(),
     updated_at TIMESTAMP DEFAULT NOW()
-)
+);
 
 CREATE TABLE group_members (
     id BIGSERIAL PRIMARY KEY,
@@ -28,7 +28,7 @@ CREATE TABLE group_members (
     role VARCHAR(20) DEFAULT 'MEMBER',
     last_seen_at TIMESTAMP DEFAULT NOW(),
     joined_at TIMESTAMP DEFAULT NOW()
-)
+);
 
 CREATE TABLE messages (
     id BIGSERIAL PRIMARY KEY,
@@ -37,7 +37,7 @@ CREATE TABLE messages (
     content TEXT NOT NULL,
     message_type VARCHAR(20) DEFAULT 'TEXT',
     created_at TIMESTAMP DEFAULT NOW()
-)
+);
 
 CREATE INDEX idx_messages_group_created ON messages(group_id, created_at);
 CREATE INDEX idx_messages_sender ON messages(sender_id);
@@ -54,7 +54,7 @@ CREATE TABLE ai_analyses (
     to_message_id BIGINT REFERENCES messages(id) ON DELETE CASCADE,
     message_count INTEGER,
     analyzed_at TIMESTAMP DEFAULT NOW()
-)
+);
 
 CREATE INDEX idx_ai_analyses_group_user ON ai_analyses(group_id, user_id);
 
