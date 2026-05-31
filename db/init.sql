@@ -7,7 +7,7 @@ CREATE TABLE users (
     avatar_url VARCHAR(500),
     last_global_onlie TIMESTAMP DEFAULT NOW(),
     created_at TIMESTAMP DEFAULT NOW(),
-    updated_at TIMESTAMP DEFAULT NOW(),
+    updated_at TIMESTAMP DEFAULT NOW()
 )
 
 CREATE TABLE groups (
@@ -18,7 +18,7 @@ CREATE TABLE groups (
     created_by BIGINT REFERENCES users(id) ON DELETE SET NULL,
     is_direct_message BOOLEAN,
     created_at TIMESTAMP DEFAULT NOW(),
-    updated_at TIMESTAMP DEFAULT NOW(),
+    updated_at TIMESTAMP DEFAULT NOW()
 )
 
 CREATE TABLE group_members (
